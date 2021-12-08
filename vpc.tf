@@ -5,22 +5,45 @@ resource "aws_vpc" "api-gateway-vpc" {
   }
 }
 
-resource "aws_subnet" "public-subnet" {
+resource "aws_subnet" "public-subnet-01" {
   vpc_id     = aws_vpc.api-gateway-vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1a"
   map_public_ip_on_launch = true
   tags = {
-    Name = "public-subnet-1A"
+    Name = "public-subnet-1a"
+    Tier = "Public"
   }
 }
 
-resource "aws_subnet" "private-subnet" {
+resource "aws_subnet" "public-subnet-02" {
   vpc_id     = aws_vpc.api-gateway-vpc.id
   cidr_block = "10.0.16.0/24"
+  availability_zone = "us-east-1b"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-1b"
+    Tier = "Public"
+  }
+}
+
+resource "aws_subnet" "private-subnet-01" {
+  vpc_id     = aws_vpc.api-gateway-vpc.id
+  cidr_block = "10.0.32.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "private-subnet-1A"
+    Name = "private-subnet-1a"
+    Tier = "Private"
+  }
+}
+
+resource "aws_subnet" "private-subnet-02" {
+  vpc_id     = aws_vpc.api-gateway-vpc.id
+  cidr_block = "10.0.64.0/24"
+  availability_zone = "us-east-1b"
+  tags = {
+    Name = "private-subnet-1b"
+    Tier = "Private"
   }
 }
 
@@ -44,7 +67,12 @@ resource "aws_route_table" "public-route-table" {
   }
 }
 
-resource "aws_route_table_association" "public-route-association" {
-  subnet_id      = aws_subnet.subnet-1.id
+resource "aws_route_table_association" "public-route-association-01" {
+  subnet_id      = aws_subnet.public-subnet-01.id
+  route_table_id = aws_route_table.public-route-table.id
+}
+
+resource "aws_route_table_association" "public-route-association-02" {
+  subnet_id      = aws_subnet.public-subnet-02.id
   route_table_id = aws_route_table.public-route-table.id
 }
