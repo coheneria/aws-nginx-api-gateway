@@ -9,6 +9,6 @@ resource "aws_instance" "nginx-server" {
   }
 
   depends_on = [
-    aws_security_group.ec2-sg.id
+    aws_security_group.ec2-sg
   ]
 }

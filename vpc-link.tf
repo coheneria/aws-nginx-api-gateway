@@ -4,6 +4,9 @@ data "aws_subnet_ids" "public-subnets" {
   tags = {
     Tier = "Public"
   }
+    depends_on = [
+    aws_vpc.api-gateway-vpc
+  ]
 }
 
 resource "aws_apigatewayv2_vpc_link" "nginx-vpc-link" {
@@ -16,6 +19,6 @@ resource "aws_apigatewayv2_vpc_link" "nginx-vpc-link" {
   }
 
   depends_on = [
-    aws_lb.nginx-load-balancer.id
+    aws_lb.nginx-load-balancer
   ]
 }

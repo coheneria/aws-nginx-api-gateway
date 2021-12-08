@@ -1,3 +1,4 @@
+#Creating ALB target group
 resource "aws_lb_target_group" "instance-target-group" {
   health_check {
     interval            = 60
@@ -18,12 +19,14 @@ resource "aws_lb_target_group" "instance-target-group" {
   ]
 }
 
+# Attaching instance to target group
 resource "aws_lb_target_group_attachment" "nginx-instance" {
   target_group_arn = aws_lb_target_group.instance-target-group.arn
   target_id        = "${aws_instance.nginx-server.id}"
   port= 80
 }
 
+# Creating Load balancer.
 resource "aws_lb" "nginx-load-balancer" {
   name     = "nginx-load-balancer"
   internal = true
@@ -45,6 +48,7 @@ resource "aws_lb" "nginx-load-balancer" {
   load_balancer_type = "application"
 }
 
+# Creating Listener to the required instance.
 resource "aws_lb_listener" "nginx-alb-listner" {
   load_balancer_arn = "${aws_lb.nginx-load-balancer.arn}"
   port              = 80
