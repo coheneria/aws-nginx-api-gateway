@@ -67,11 +67,11 @@ wait to the process to finish.
 Go to API-Gateway in AWS console, click on "app-http-api" and click on the "Invoke URL" <br/>
 
 <p align="center">
-  <img src="https://github.com/coheneria/aws-nginx-api-gateway/blob/main/files/photos/api.png" width="100%" height="100%" />
+  <img src="https://github.com/coheneria/aws-nginx-api-gateway/blob/main/files/photos/api.PNG" width="100%" height="100%" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/coheneria/aws-nginx-api-gateway/blob/main/files/photos/result.png" width="100%" height="100%" />
+  <img src="https://github.com/coheneria/aws-nginx-api-gateway/blob/main/files/photos/result.PNG" width="100%" height="100%" />
 </p>
 
 ### Destroy the infrastructure
