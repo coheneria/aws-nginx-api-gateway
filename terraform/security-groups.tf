@@ -1,3 +1,4 @@
+# Creating vpc-link security group
 resource "aws_security_group" "vpc-link-sg" {
   name        = "vpc-link-sg"
   description = "Security Group for vpc-link"
@@ -35,6 +36,7 @@ resource "aws_security_group" "vpc-link-sg" {
   }
 }
 
+# Creating Application Load Balancer security group
 resource "aws_security_group" "alb-sg" {
   name        = "alb-security-group"
   description = "SG for alb"
@@ -77,8 +79,7 @@ resource "aws_security_group" "alb-sg" {
   ]
 }
 
-  
-
+# Creating instance security group
 resource "aws_security_group" "ec2-sg" {
   name        = "ec2-sg"
   description = "SG for ec2"

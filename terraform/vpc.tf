@@ -1,3 +1,4 @@
+# Creating VPC
 resource "aws_vpc" "api-gateway-vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
@@ -16,6 +17,7 @@ resource "aws_subnet" "public-subnet-01" {
   }
 }
 
+# Creating 2 private + public subnets for multiple availability zones
 resource "aws_subnet" "public-subnet-02" {
   vpc_id     = aws_vpc.api-gateway-vpc.id
   cidr_block = "10.0.16.0/24"
@@ -47,6 +49,7 @@ resource "aws_subnet" "private-subnet-02" {
   }
 }
 
+# Attach Internet gateway to our VPC
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.api-gateway-vpc.id
   tags = {
@@ -54,6 +57,7 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
+# Creating route tables
 resource "aws_route_table" "public-route-table" {
   vpc_id       = aws_vpc.api-gateway-vpc.id
 

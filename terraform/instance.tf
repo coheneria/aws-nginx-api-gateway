@@ -1,4 +1,4 @@
-# Creating private instance on subnet-private that will contain nginx
+# Creating private instance on subnet-private that will contain the  Bitnami NGINX
 resource "aws_instance" "nginx-server" {
   ami = var.AMI
   instance_type = "t2.micro"

@@ -1,4 +1,4 @@
-#Creating ALB target group
+# Creating ALB target group
 resource "aws_lb_target_group" "instance-target-group" {
   health_check {
     interval            = 60
