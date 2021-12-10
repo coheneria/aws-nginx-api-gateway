@@ -1,6 +1,6 @@
 # aws-nginx-api-gateway
 
-This project come to demonstarte how to access web-application in private subnet (without internet access) with API-Gateway throug Application Load Balancer.
+This project come to demonstarte how to access web-application in private subnet (without internet access) with API-Gateway through Application Load Balancer.
 https://medium.com/swlh/aws-api-gateway-private-integration-with-http-api-and-a-vpc-link-602360a1cd84
 
 ### Export your AWS-CLI credientials:
